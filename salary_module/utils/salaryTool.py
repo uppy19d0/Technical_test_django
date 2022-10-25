@@ -1,6 +1,5 @@
 # from asyncio.windows_events import NULL
 
-
 class SalaryTool:
 
     def ISR(self,salary):
