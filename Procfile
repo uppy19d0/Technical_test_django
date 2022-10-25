@@ -1,1 +1,1 @@
-web: gunicorn Project_Django.wsgi --log-file -
+web: gunicorn interview.wsgi --log-file -
