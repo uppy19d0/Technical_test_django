@@ -1,0 +1,70 @@
+{% extends 'basic.html' %} {% block content %}
+
+    <div class="container titulo">
+        <br/>
+        <h1 style="background-color:#0D6EFD;">
+            <p class="text-white">         Salary Discount Calculator</p>
+
+        </h1>
+    </div>
+    <div class="container cajacalculo">
+        <form method="post">
+            {% csrf_token %}
+            <label for="Sueldo" class="space">Monthly Salary (in DOP): </label>
+            <div class="input-group mb-2">
+                <div class="input-group-p1repend">
+                    <div class="input-group-text">RD$</div>
+                </div>
+                <input type="number"  required class="form-control" name="salary" placeholder="50000">
+            </div>
+
+            <label for="bono" class="space">Bonifications (in DOP):</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">RD$</div>
+                </div>
+                <input type="number" class="form-control" name="bono"  placeholder="0">
+            </div>
+                    
+            <label for="horaextra" class="space">Extra Hours(in DOP):</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">RD$</div>
+                </div>
+                <input type="number" class="form-control" name="hours" placeholder="0">
+            </div>
+            <button type="submit" class="btn btn-primary" >Calculate</button>
+        </form>
+
+    </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            Results
+        </div>
+        <div class="card-body">
+            <div class="center-content bottom-border">
+                <span class="resultado-neto" id="subTotalMensual"> {{Total}}</span><br>
+                <span class="small">Pago mensual</span><br>
+                <hr>
+                <table class="table table-borderless">
+                    <tbody>
+                        <tr>
+                            
+                            <th id="AFPMensual">RD$ {{afp}}</th>
+                            <th id="SFSMensual">RD$ {{sfs}}</th>
+                            <th id="ISRMensual">RD$ {{isr}}</th>
+                        </tr>
+                        <tr>
+                            <td>AFP</td>
+                            <td>SFS</td>
+                            <td>ISR</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
