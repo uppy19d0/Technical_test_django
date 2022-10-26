@@ -40,11 +40,6 @@ class SalaryTool:
     def Total(self,sueldo, afp, sfs, isr):
         monto =sueldo - afp - sfs - isr;
         return  float("{:.2f}".format(monto)) 
-    # def Subtotal(self,afp, sfs, isr):
-    #     monto=afp + sfs + isr
-    #     # montoSubtotal=format(monto, ".2f")
-    #     # return eval(montoSubtotal)
-    #     return monto
 
     def validationInput(self,_number):
         if _number is not None and _number is not '':
