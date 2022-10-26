@@ -8,9 +8,12 @@ salarytoool = SalaryTool()
 
 @csrf_exempt
 def calculator(request):
-    afp = ''
-    isr = ''
-    sfs = ''
+    # afp = ''
+    # isr = ''
+    # sfs = ''
+    afpSalary =''
+    sfsSalary = ''
+    isrSalary =''
 
     _salary =0
     _bonificacion=0
@@ -19,17 +22,20 @@ def calculator(request):
     try:
         if request.method == "POST":
             _salary = salarytoool.validationInput(request.POST.get('salary'))
-            _bonificacion =  salarytoool.validationInput(request.POST.get('bono'))
-            _hoursExtra =  salarytoool.validationInput(request.POST.get('hours'))
-            totalSalary =_salary+_bonificacion+_hoursExtra
+            _bonus =  salarytoool.validationInput(request.POST.get('bono'))
+            _extraHours =  salarytoool.validationInput(request.POST.get('hours'))
+            
+            totalIncome = _salary + _bonus + _extraHours
 
-            afp = salarytoool.AFP(totalSalary)
-            sfs = salarytoool.SFS(totalSalary)
-            isr = salarytoool.ISR(totalSalary-afp-sfs)
-            Total=salarytoool.Total(totalSalary,afp,sfs,isr)
+            withoutExtra = _salary + _bonus
+
+            afpTotal = salarytoool.AFP(withoutExtra)
+            sfsTotal = salarytoool.SFS(withoutExtra)
+            isrTotal = salarytoool.ISR(totalIncome-afpTotal-sfsTotal)
+            Total=salarytoool.Total(totalIncome,afpTotal,sfsTotal,isrTotal)
             
     except ValueError:
         print(ValueError)
         c = "Invalid calculator"
-    return render(request, "calculator.html", {'isr': isr, 'afp': afp, 'sfs': sfs,'Total':Total})
+    return render(request, "calculator.html", {'isr': isrTotal, 'afp': afpTotal, 'sfs': sfsTotal,'Total':Total})
 
