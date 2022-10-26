@@ -1,12 +1,12 @@
 from django.shortcuts import render
 
 from salary_module.utils.salaryTool import SalaryTool
-
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 salarytoool = SalaryTool()
 
-
+@csrf_exempt
 def calculator(request):
     afp = ''
     isr = ''
