@@ -16,10 +16,9 @@ class SalaryTool:
         elif sueldoAnual > 867123.00:
             isr = (sueldoAnual - 867123.01) * 0.25 + 79776.00
 
-        #Quincena = isr / 24
         mensual = isr / 12
 
-       # mensual=format(mensual, ".2f")
+        mensual=float("{:.2f}".format(mensual)) 
 
         return mensual
         # return eval(mensual)
@@ -28,19 +27,19 @@ class SalaryTool:
         monto= salary * 0.0287
         # montoAFP=format(monto, ".2f")
         # return eval(montoAFP)
-        return monto
+        return float("{:.2f}".format(monto)) 
     
 
     def SFS(self,salary):
         monto=salary * 0.0304
         # montoSFS= format(monto, ".2f")
         # return eval(montoSFS)
-        return monto
+        return float("{:.2f}".format(monto)) 
 
 
     def Total(self,sueldo, afp, sfs, isr):
-        return sueldo - afp - sfs - isr;
-
+        monto =sueldo - afp - sfs - isr;
+        return  float("{:.2f}".format(monto)) 
     # def Subtotal(self,afp, sfs, isr):
     #     monto=afp + sfs + isr
     #     # montoSubtotal=format(monto, ".2f")
